@@ -7,4 +7,7 @@ RUN mkdir /work /app
 WORKDIR /work
 RUN git clone https://github.com/NCATSTranslator/ReasonerAPI.git ./ReasonerAPI.git
 
-CMD ["fastapi-codegen", "--input", "/work/ReasonerAPI.git/TranslatorReasonerAPI.yaml", "--output", "/app"]
+COPY main.sh /work
+RUN chmod 755 /work/main.sh
+
+CMD ["/work/main.sh"]
